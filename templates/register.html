@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block body %}
+<form method="post" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <div class="container-lg border border-danger border-3 rounded-3 mt-5">
+        <div class="row p-5">
+            <h2>Register</h2><br><br><br>
+            {% if username_taken %}
+             <div class="alert alert-primary">
+                 <P>username is taken</P>
+             </div>
+            {% endif %}
+            {% for errors in form.errors.values()%}
+            {% for error in errors %}
+             <div class="alert alert-primary">
+            <P>{{ error }}</P>
+             </div>
+            {%endfor%}
+            {%endfor%}
+
+            <div class="col p-5">
+                <div class="row">
+                    {{form.username(class="form-control border-danger border-2", placeholder=
+                    form.username.label.text)}}
+                </div>
+                <div class="row mt-3">
+                    {{form.password(class="form-control border-danger border-2", placeholder=
+                    form.password.label.text)}}
+                </div>
+                <div class="row mt-3">
+                    {{form.repeat_password(class="form-control border-danger border-2", placeholder=
+                    form.repeat_password.label.text)}}
+                </div>
+                <div class="row-3 mt-5">
+                    {{form.submit(class="btn btn-primary")}}
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}
+

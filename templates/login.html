@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block body %}
+<div class="container-lg mt-5 bg-danger-subtle border border-3 border-primary rounded-4 ">
+    <form method="post" enctype="multipart/form-data">
+        {{ loginform.hidden_tag() }}
+        <div class="row p-5">
+            <h2>Login</h2><br><br><br>
+            {% for errors in loginform.errors.values()%}
+            {% for error in errors %}
+            <div class="alert alert-primary">
+                <P>{{ error }}</P>
+            </div>
+            {%endfor%}
+            {%endfor%}
+
+            <div class="col p-5">
+                <div class="row">
+                    {{loginform.username(class="form-control border-danger border-2", placeholder=
+                    loginform.username.label.text)}}
+                </div>
+                <div class="row mt-3">
+                    {{loginform.password(class="form-control border-danger border-2", placeholder=
+                    loginform.password.label.text)}}
+                </div>
+                <div class="row-3 mt-5">
+                    {{loginform.submit(class="btn btn-primary")}}
+                </div>
+            </div>
+        </div>
+    {% set messages= get_flashed_messages() %}
+        {% for message in messages %}
+        <div class="alert alert-success">
+             {{message}}
+        </div>
+        {%endfor%}
+
+    </form>
+</div>
+
+{% endblock %}

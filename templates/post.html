@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %} Post {% endblock %}
+{% block body %}
+<form method="post" enctype="multipart/form-data">
+     {{ postform.hidden_tag() }}
+    <div class="container-lg mt-5 border border-3 rounded-3 border-success h-100 ">
+        <div class="row p-5">
+            <h2>Create Your Post</h2>
+            <div class="col p-5">
+                <div class="row">
+                 {{ postform.game_name(class="form-control border border-success", Placeholder=postform.game_name.label.text) }}
+                 {{ postform.description(class="form-control border border-success mt-5 mb-5", rows=3 ,
+                    Placeholder=postform.description.label.text) }}
+                 {{ postform.game_img() }}
+                 {{postform.submit(class = "btn btn-primary mt-5")}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

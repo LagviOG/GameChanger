@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="container-md p-5 border border-3 border-danger rounded-2">
+    <img src="/static/photos/{{ game['img'] }}" width="50%" height="50%">
+    <div class="row mt-5">
+        <h3>name: {{ game['name'] }}</h3>
+    </div>
+    <div class="row mt-5">
+        <div class="row">
+            <h5>description:</h5><br> {{ game['description'] }}
+        </div>
+    </div>
+</div>
+{% endblock %}

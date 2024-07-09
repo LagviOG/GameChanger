@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+<div class="container-lg border border-danger border-3 rounded-3 mt-5">
+    <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1">
+        {%for game in games%}
+        <div class="col p-5">
+            <div class="card" style="width: 18rem;">
+                <img src="static/photos/{{game['img']}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{game ["name"] }}</h5>
+                    <p class="card-text">{{game ['description']}}</p>
+                    <a href="/game/{{ game['id'] }}" class="btn btn-primary">See</a>
+                    {%if current_user.role == "admin"%}
+                    <a href="/delete_game/{{game ['id']}}" class="btn btn-danger">delete</a>
+                    {%endif%}
+                </div>
+            </div>
+
+        </div>
+        {%endfor%}
+    </div>
+
+</div>
+<div class="container-lg  mt-5">
+<a href="https://www.tbceducation.ge/">
+<img src="/static/photos/tbc-logo.png" width="100" length="100">
+</a>
+</div>
+{%endblock%}
+
